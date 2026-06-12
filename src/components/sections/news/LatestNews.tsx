@@ -26,7 +26,6 @@ export default function LatestNews() {
 return ( <section className="bg-slate-50 py-24"> <Container> <div className="mx-auto max-w-3xl text-center"> <span className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-800">
 News & Updates </span>
 
-```
       <h2 className="mt-6 text-4xl font-bold text-slate-900">
         Latest Activities and Updates
       </h2>

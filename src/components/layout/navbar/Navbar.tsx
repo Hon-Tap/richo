@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import MobileMenu from "@/components/layout/mobile-menu/MobileMenu";
 import Container from "@/components/ui/container";
@@ -10,65 +11,98 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/site";
 
 export default function Navbar() {
-const pathname = usePathname();
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
 
-return ( <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur"> <Container> <div className="flex h-20 items-center justify-between">
-{/* Logo */}
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
 
-      <Link
-        href="/"
-        className="flex items-center gap-3"
-      >
-        <Image
-          src="/images/logo.png"
-          alt="RICHO Logo"
-          width={56}
-          height={56}
-          priority
-        />
+    window.addEventListener("scroll", handleScroll);
 
-        <div className="hidden md:block">
-          <h1 className="font-bold leading-tight text-green-900">
-            Rural Integrated Community
-          </h1>
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-          <p className="text-xs text-slate-500">
-            Health & Climate Organisation
-          </p>
-        </div>
-      </Link>
-
-      {/* Desktop Navigation */}
-
-      <nav className="hidden items-center gap-8 lg:flex">
-        {siteConfig.navigation.map((item) => (
+  return (
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-xl"
+          : "bg-white"
+      }`}
+    >
+      <Container>
+        <div className="flex h-24 items-center justify-between">
           <Link
-            key={item.href}
-            href={item.href}
-            className={`text-sm font-medium transition-colors ${
-              pathname === item.href
-                ? "text-green-700"
-                : "text-slate-700 hover:text-green-700"
-            }`}
+            href="/"
+            className="group flex items-center gap-4"
           >
-            {item.title}
+            <Image
+              src="/images/logo.png"
+              alt="RICHO Logo"
+              width={62}
+              height={62}
+              priority
+              className="transition-transform duration-300 group-hover:scale-105"
+            />
+
+            <div className="hidden md:block">
+              <h1 className="text-lg font-bold text-green-900">
+                Rural Integrated Community
+              </h1>
+
+              <p className="text-sm text-slate-500">
+                Health & Climate Organisation
+              </p>
+            </div>
           </Link>
-        ))}
-      </nav>
 
-      {/* Right Side */}
+          <nav className="hidden items-center gap-8 lg:flex">
+            {siteConfig.navigation.map((item) => {
+              const active = pathname === item.href;
 
-      <div className="flex items-center gap-3">
-        <Button className="hidden bg-green-700 hover:bg-green-800 lg:flex">
-          Partner With Us
-        </Button>
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative text-sm font-medium transition-all ${
+                    active
+                      ? "text-green-700"
+                      : "text-slate-700 hover:text-green-700"
+                  }`}
+                >
+                  {item.title}
 
-        <MobileMenu />
-      </div>
-    </div>
-  </Container>
-</header>
+                  {active && (
+                    <span className="absolute -bottom-2 left-0 h-0.5 w-full bg-green-700" />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
 
+          <div className="flex items-center gap-4">
+            <Button
+              className="
+                hidden
+                lg:flex
+                bg-green-700
+                hover:bg-green-800
+                rounded-full
+                px-6
+                h-11
+                font-semibold
+              "
+            >
+              Partner With Us
+            </Button>
 
-);
+            <MobileMenu />
+          </div>
+        </div>
+      </Container>
+    </header>
+  );
 }

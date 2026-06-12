@@ -26,7 +26,6 @@ export default function Partners() {
 return ( <section className="bg-white py-24"> <Container> <div className="mx-auto max-w-3xl text-center"> <span className="inline-flex rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-800">
 Working Together </span>
 
-```
       <h2 className="mt-6 text-4xl font-bold text-slate-900">
         Community-Centered Partnerships
       </h2>

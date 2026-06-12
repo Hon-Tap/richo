@@ -27,7 +27,6 @@ export default function SuccessStories() {
 return ( <section className="bg-slate-50 py-24"> <Container> <div className="mx-auto max-w-3xl text-center"> <span className="inline-flex rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-800">
 Success Stories </span>
 
-```
       <h2 className="mt-6 text-4xl font-bold text-slate-900">
         Stories of Change and Resilience
       </h2>
