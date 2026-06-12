@@ -1,95 +1,290 @@
-
 import {
-  HeartPulse,
-  Droplets,
-  Leaf,
-  ShieldCheck,
-  Users,
+HeartPulse,
+Droplets,
+Leaf,
+ShieldCheck,
+Users,
+ArrowRight,
 } from "lucide-react";
 
 import Container from "@/components/ui/container";
 import { Card, CardContent } from "@/components/ui/card";
 
 const pillars = [
-  {
-    title: "Community Health Promotion",
-    description:
-      "Improving health awareness, disease prevention, maternal health, and community wellbeing through education and local action.",
-    icon: HeartPulse,
-  },
-  {
-    title: "Water, Sanitation & Hygiene (WASH)",
-    description:
-      "Promoting safe water access, sanitation services, hygiene education, and environmental health practices.",
-    icon: Droplets,
-  },
-  {
-    title: "Climate Adaptation & Resilience",
-    description:
-      "Supporting communities to prepare for floods, environmental shocks, and climate-related health risks.",
-    icon: Leaf,
-  },
-  {
-    title: "Disaster Risk Reduction",
-    description:
-      "Strengthening preparedness, early warning systems, emergency response, and recovery mechanisms.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Community Capacity Building",
-    description:
-      "Empowering local leaders, volunteers, youth, women, and community groups to drive sustainable development.",
-    icon: Users,
-  },
+{
+title: "Community Health",
+description:
+"Promoting disease prevention, maternal and child health, health education, and community wellbeing through locally driven initiatives.",
+icon: HeartPulse,
+},
+{
+title: "WASH",
+description:
+"Supporting safe water access, sanitation services, hygiene promotion, and environmental health practices.",
+icon: Droplets,
+},
+{
+title: "Climate Resilience",
+description:
+"Helping communities adapt to floods, environmental shocks, and climate-related risks through preparedness and resilience measures.",
+icon: Leaf,
+},
+{
+title: "Disaster Preparedness",
+description:
+"Strengthening early warning systems, emergency response capacity, preparedness planning, and recovery mechanisms.",
+icon: ShieldCheck,
+},
+{
+title: "Community Empowerment",
+description:
+"Building the capacity of youth, women, local leaders, volunteers, and community structures to lead sustainable change.",
+icon: Users,
+},
 ];
 
 export default function StrategicPillars() {
-  return (
-    <section className="bg-white py-24">
-      <Container>
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-800">
-            Our Strategic Pillars
-          </span>
+const firstRow = pillars.slice(0, 3);
+const secondRow = pillars.slice(3);
 
-          <h2 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
-            Building Resilient Communities Through Integrated Action
-          </h2>
+return ( <section className="relative overflow-hidden bg-slate-50 py-24">
+{/* Background Accent */}
 
-          <p className="mt-6 text-lg text-slate-600">
-            RICHO delivers sustainable, community-led solutions that
-            strengthen health systems, climate resilience, disaster
-            preparedness, and social cohesion across South Sudan.
-          </p>
-        </div>
+  <div className="absolute inset-0">
+    <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-green-100/40 blur-3xl" />
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {pillars.map((pillar) => {
-            const Icon = pillar.icon;
+    <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-orange-100/30 blur-3xl" />
+  </div>
 
-            return (
-              <Card
-                key={pillar.title}
-                className="group border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:border-green-200 hover:shadow-xl"
-              >
-                <CardContent className="p-8">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-green-700">
-                    <Icon className="h-7 w-7" />
-                  </div>
+  <Container>
+    <div className="relative">
+      {/* Section Header */}
 
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    {pillar.title}
-                  </h3>
+      <div className="mx-auto max-w-4xl text-center">
+        <span className="inline-flex rounded-full bg-green-100 px-5 py-2 text-sm font-semibold text-green-800">
+          Our Strategic Pillars
+        </span>
 
-                  <p className="mt-4 leading-relaxed text-slate-600">
-                    {pillar.description}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </Container>
-    </section>
-  );
+        <h2 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+          Delivering Integrated Solutions For
+          <br />
+          Health, Resilience and Sustainable Development
+        </h2>
+
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+          RICHO works alongside communities to strengthen
+          health systems, improve resilience to climate
+          and disaster risks, and empower local actors
+          to drive sustainable development across South Sudan.
+        </p>
+      </div>
+
+      {/* First Row */}
+
+      <div className="mt-16 grid gap-8 lg:grid-cols-3">
+        {firstRow.map((pillar) => {
+          const Icon = pillar.icon;
+
+          return (
+            <Card
+              key={pillar.title}
+              className="
+                group
+                relative
+                overflow-hidden
+                border-slate-200
+                bg-white/90
+                backdrop-blur-sm
+                transition-all
+                duration-500
+                ease-out
+                hover:-translate-y-1.5
+                hover:border-green-200
+                hover:shadow-2xl
+              "
+            >
+              <div
+                className="
+                  absolute
+                  left-0
+                  top-0
+                  h-1
+                  w-full
+                  bg-gradient-to-r
+                  from-green-700
+                  to-green-400
+                  opacity-0
+                  transition-opacity
+                  duration-500
+                  group-hover:opacity-100
+                "
+              />
+
+              <CardContent className="p-8">
+                <div
+                  className="
+                    mb-6
+                    flex
+                    h-16
+                    w-16
+                    items-center
+                    justify-center
+                    rounded-2xl
+                    bg-green-100
+                    text-green-700
+                    transition-all
+                    duration-500
+                    group-hover:scale-105
+                    group-hover:rotate-3
+                  "
+                >
+                  <Icon className="h-8 w-8" />
+                </div>
+
+                <h3 className="text-xl font-bold text-slate-900">
+                  {pillar.title}
+                </h3>
+
+                <p className="mt-4 leading-relaxed text-slate-600">
+                  {pillar.description}
+                </p>
+
+                <div
+                  className="
+                    mt-6
+                    flex
+                    items-center
+                    text-sm
+                    font-semibold
+                    text-green-700
+                    opacity-0
+                    transition-all
+                    duration-500
+                    group-hover:opacity-100
+                  "
+                >
+                  Learn More
+
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Second Row Centered */}
+
+      <div className="mx-auto mt-8 grid max-w-4xl gap-8 md:grid-cols-2">
+        {secondRow.map((pillar) => {
+          const Icon = pillar.icon;
+
+          return (
+            <Card
+              key={pillar.title}
+              className="
+                group
+                relative
+                overflow-hidden
+                border-slate-200
+                bg-white/90
+                backdrop-blur-sm
+                transition-all
+                duration-500
+                ease-out
+                hover:-translate-y-1.5
+                hover:border-green-200
+                hover:shadow-2xl
+              "
+            >
+              <div
+                className="
+                  absolute
+                  left-0
+                  top-0
+                  h-1
+                  w-full
+                  bg-gradient-to-r
+                  from-green-700
+                  to-green-400
+                  opacity-0
+                  transition-opacity
+                  duration-500
+                  group-hover:opacity-100
+                "
+              />
+
+              <CardContent className="p-8">
+                <div
+                  className="
+                    mb-6
+                    flex
+                    h-16
+                    w-16
+                    items-center
+                    justify-center
+                    rounded-2xl
+                    bg-green-100
+                    text-green-700
+                    transition-all
+                    duration-500
+                    group-hover:scale-105
+                    group-hover:rotate-3
+                  "
+                >
+                  <Icon className="h-8 w-8" />
+                </div>
+
+                <h3 className="text-xl font-bold text-slate-900">
+                  {pillar.title}
+                </h3>
+
+                <p className="mt-4 leading-relaxed text-slate-600">
+                  {pillar.description}
+                </p>
+
+                <div
+                  className="
+                    mt-6
+                    flex
+                    items-center
+                    text-sm
+                    font-semibold
+                    text-green-700
+                    opacity-0
+                    transition-all
+                    duration-500
+                    group-hover:opacity-100
+                  "
+                >
+                  Learn More
+
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Bottom Statement */}
+
+      <div className="mt-20 rounded-3xl border border-slate-200 bg-white p-10 text-center shadow-sm">
+        <h3 className="text-2xl font-bold text-slate-900">
+          Community-Led. Resilient. Sustainable.
+        </h3>
+
+        <p className="mx-auto mt-4 max-w-3xl text-slate-600">
+          Our work is guided by participation,
+          equity, resilience and sustainability,
+          ensuring communities remain at the center
+          of every intervention and development effort.
+        </p>
+      </div>
+    </div>
+  </Container>
+</section>
+
+
+);
 }
