@@ -4,282 +4,126 @@ Droplets,
 Leaf,
 ShieldCheck,
 Users,
-ArrowRight,
 } from "lucide-react";
 
 import Container from "@/components/ui/container";
-import { Card, CardContent } from "@/components/ui/card";
 
 const pillars = [
 {
+number: "01",
 title: "Community Health",
 description:
-"Promoting disease prevention, maternal and child health, health education, and community wellbeing through locally driven initiatives.",
+"Disease prevention, maternal and child health, and community wellbeing.",
 icon: HeartPulse,
 },
 {
+number: "02",
 title: "WASH",
 description:
-"Supporting safe water access, sanitation services, hygiene promotion, and environmental health practices.",
+"Safe water access, sanitation services, and hygiene promotion.",
 icon: Droplets,
 },
 {
+number: "03",
 title: "Climate Resilience",
 description:
-"Helping communities adapt to floods, environmental shocks, and climate-related risks through preparedness and resilience measures.",
+"Adaptation, preparedness, and recovery from climate-related risks.",
 icon: Leaf,
 },
 {
+number: "04",
 title: "Disaster Preparedness",
 description:
-"Strengthening early warning systems, emergency response capacity, preparedness planning, and recovery mechanisms.",
+"Early warning systems, emergency response, and recovery planning.",
 icon: ShieldCheck,
 },
 {
+number: "05",
 title: "Community Empowerment",
 description:
-"Building the capacity of youth, women, local leaders, volunteers, and community structures to lead sustainable change.",
+"Strengthening local leadership, participation, and sustainable change.",
 icon: Users,
 },
 ];
 
 export default function StrategicPillars() {
-const firstRow = pillars.slice(0, 3);
-const secondRow = pillars.slice(3);
+return ( <section className="bg-white py-24"> <Container> <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+{/* LEFT SIDE */}
 
-return ( <section className="relative overflow-hidden bg-slate-50 py-24">
-{/* Background Accent */}
-
-  <div className="absolute inset-0">
-    <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-green-100/40 blur-3xl" />
-
-    <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-orange-100/30 blur-3xl" />
-  </div>
-
-  <Container>
-    <div className="relative">
-      {/* Section Header */}
-
-      <div className="mx-auto max-w-4xl text-center">
-        <span className="inline-flex rounded-full bg-green-100 px-5 py-2 text-sm font-semibold text-green-800">
-          Our Strategic Pillars
+      <div className="lg:sticky lg:top-32 lg:self-start">
+        <span className="text-sm font-semibold uppercase tracking-[0.25em] text-green-700">
+          Strategic Pillars
         </span>
 
-        <h2 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
-          Delivering Integrated Solutions For
+        <h2 className="mt-5 text-4xl font-light leading-tight text-slate-900 md:text-5xl">
+          Integrated Solutions For
           <br />
-          Health, Resilience and Sustainable Development
+          Stronger Communities
         </h2>
 
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-          RICHO works alongside communities to strengthen
-          health systems, improve resilience to climate
-          and disaster risks, and empower local actors
-          to drive sustainable development across South Sudan.
+        <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-600">
+          RICHO works alongside communities
+          to improve health outcomes,
+          strengthen resilience, support recovery,
+          and promote sustainable development
+          across South Sudan.
         </p>
       </div>
 
-      {/* First Row */}
+      {/* RIGHT SIDE */}
 
-      <div className="mt-16 grid gap-8 lg:grid-cols-3">
-        {firstRow.map((pillar) => {
+      <div className="space-y-2">
+        {pillars.map((pillar) => {
           const Icon = pillar.icon;
 
           return (
-            <Card
+            <div
               key={pillar.title}
               className="
                 group
-                relative
-                overflow-hidden
+                flex
+                items-start
+                gap-6
+                border-b
                 border-slate-200
-                bg-white/90
-                backdrop-blur-sm
-                transition-all
-                duration-500
-                ease-out
-                hover:-translate-y-1.5
-                hover:border-green-200
-                hover:shadow-2xl
+                py-8
+                transition-colors
+                hover:border-green-300
               "
             >
+              <div className="min-w-[50px]">
+                <span className="text-sm font-semibold text-green-700">
+                  {pillar.number}
+                </span>
+              </div>
+
               <div
                 className="
-                  absolute
-                  left-0
-                  top-0
-                  h-1
-                  w-full
-                  bg-gradient-to-r
-                  from-green-700
-                  to-green-400
-                  opacity-0
-                  transition-opacity
-                  duration-500
-                  group-hover:opacity-100
+                  flex
+                  h-12
+                  w-12
+                  items-center
+                  justify-center
+                  rounded-xl
+                  bg-green-50
+                  text-green-700
                 "
-              />
+              >
+                <Icon className="h-6 w-6" />
+              </div>
 
-              <CardContent className="p-8">
-                <div
-                  className="
-                    mb-6
-                    flex
-                    h-16
-                    w-16
-                    items-center
-                    justify-center
-                    rounded-2xl
-                    bg-green-100
-                    text-green-700
-                    transition-all
-                    duration-500
-                    group-hover:scale-105
-                    group-hover:rotate-3
-                  "
-                >
-                  <Icon className="h-8 w-8" />
-                </div>
-
-                <h3 className="text-xl font-bold text-slate-900">
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-slate-900">
                   {pillar.title}
                 </h3>
 
-                <p className="mt-4 leading-relaxed text-slate-600">
+                <p className="mt-2 max-w-xl leading-relaxed text-slate-600">
                   {pillar.description}
                 </p>
-
-                <div
-                  className="
-                    mt-6
-                    flex
-                    items-center
-                    text-sm
-                    font-semibold
-                    text-green-700
-                    opacity-0
-                    transition-all
-                    duration-500
-                    group-hover:opacity-100
-                  "
-                >
-                  Learn More
-
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           );
         })}
-      </div>
-
-      {/* Second Row Centered */}
-
-      <div className="mx-auto mt-8 grid max-w-4xl gap-8 md:grid-cols-2">
-        {secondRow.map((pillar) => {
-          const Icon = pillar.icon;
-
-          return (
-            <Card
-              key={pillar.title}
-              className="
-                group
-                relative
-                overflow-hidden
-                border-slate-200
-                bg-white/90
-                backdrop-blur-sm
-                transition-all
-                duration-500
-                ease-out
-                hover:-translate-y-1.5
-                hover:border-green-200
-                hover:shadow-2xl
-              "
-            >
-              <div
-                className="
-                  absolute
-                  left-0
-                  top-0
-                  h-1
-                  w-full
-                  bg-gradient-to-r
-                  from-green-700
-                  to-green-400
-                  opacity-0
-                  transition-opacity
-                  duration-500
-                  group-hover:opacity-100
-                "
-              />
-
-              <CardContent className="p-8">
-                <div
-                  className="
-                    mb-6
-                    flex
-                    h-16
-                    w-16
-                    items-center
-                    justify-center
-                    rounded-2xl
-                    bg-green-100
-                    text-green-700
-                    transition-all
-                    duration-500
-                    group-hover:scale-105
-                    group-hover:rotate-3
-                  "
-                >
-                  <Icon className="h-8 w-8" />
-                </div>
-
-                <h3 className="text-xl font-bold text-slate-900">
-                  {pillar.title}
-                </h3>
-
-                <p className="mt-4 leading-relaxed text-slate-600">
-                  {pillar.description}
-                </p>
-
-                <div
-                  className="
-                    mt-6
-                    flex
-                    items-center
-                    text-sm
-                    font-semibold
-                    text-green-700
-                    opacity-0
-                    transition-all
-                    duration-500
-                    group-hover:opacity-100
-                  "
-                >
-                  Learn More
-
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-
-      {/* Bottom Statement */}
-
-      <div className="mt-20 rounded-3xl border border-slate-200 bg-white p-10 text-center shadow-sm">
-        <h3 className="text-2xl font-bold text-slate-900">
-          Community-Led. Resilient. Sustainable.
-        </h3>
-
-        <p className="mx-auto mt-4 max-w-3xl text-slate-600">
-          Our work is guided by participation,
-          equity, resilience and sustainability,
-          ensuring communities remain at the center
-          of every intervention and development effort.
-        </p>
       </div>
     </div>
   </Container>

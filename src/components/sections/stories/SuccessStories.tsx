@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import Container from "@/components/ui/container";
@@ -10,6 +11,7 @@ description:
 "Health promotion campaigns helped families understand disease prevention, maternal health and healthy living practices.",
 image: "/images/flo.jpg",
 category: "Health Impact",
+href: "/stories/community-health-awareness",
 },
 {
 title: "Supporting Flood-Affected Communities",
@@ -17,6 +19,7 @@ description:
 "Community-led preparedness and recovery initiatives strengthened resilience during seasonal flooding.",
 image: "/images/wa.jpg",
 category: "Climate Resilience",
+href: "/stories/flood-affected-communities",
 },
 {
 title: "Strengthening Community Participation",
@@ -24,23 +27,32 @@ description:
 "Inclusive dialogue processes enabled communities to actively participate in local planning and decision-making.",
 image: "/images/hero-secondary.jpg",
 category: "Community Action",
+href: "/stories/community-participation",
 },
 ];
 
 export default function SuccessStories() {
-return ( <section className="bg-slate-50 py-24"> <Container> <div className="mx-auto max-w-3xl text-center"> <span className="inline-flex rounded-full bg-green-100 px-5 py-2 text-sm font-medium text-green-800">
-Success Stories </span>
+return ( <section className="bg-slate-50 py-24"> <Container>
+{/* Header */}
 
 
-      <h2 className="mt-6 text-4xl font-bold text-slate-900 md:text-5xl">
-        Stories of Change and Resilience
+    <div className="mx-auto max-w-3xl text-center">
+      <span className="text-sm font-semibold uppercase tracking-[0.25em] text-green-700">
+        Stories & Impact
+      </span>
+
+      <h2 className="mt-5 text-4xl font-light text-slate-900 md:text-5xl">
+        Stories Of Change And Resilience
       </h2>
 
       <p className="mt-6 text-lg leading-relaxed text-slate-600">
-        Real stories from communities working together to create
-        healthier, safer and more resilient futures.
+        Real stories from communities working
+        together to create healthier, safer and
+        more resilient futures across South Sudan.
       </p>
     </div>
+
+    {/* Stories Grid */}
 
     <div className="mt-16 grid gap-8 lg:grid-cols-3">
       {stories.map((story) => (
@@ -49,47 +61,90 @@ Success Stories </span>
           className="
             group
             overflow-hidden
-            rounded-3xl
-            border
-            border-slate-200
             bg-white
             transition-all
             duration-500
-            hover:-translate-y-2
-            hover:border-green-200
-            hover:shadow-xl
+            hover:-translate-y-1
           "
         >
-          <div className="relative aspect-[4/5] overflow-hidden">
-            <Image
-              src={story.image}
-              alt={story.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
+          {/* Image */}
 
-          <div className="p-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-green-700">
+          <Link href={story.href}>
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src={story.image}
+                alt={story.title}
+                fill
+                className="
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                "
+              />
+            </div>
+          </Link>
+
+          {/* Content */}
+
+          <div className="border-x border-b border-slate-200 p-7">
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-green-700">
               {story.category}
             </span>
 
-            <h3 className="mt-3 text-xl font-bold leading-snug text-slate-900">
+            <h3 className="mt-4 text-2xl font-semibold leading-snug text-slate-900">
               {story.title}
             </h3>
 
-            <p className="mt-4 text-sm leading-relaxed text-slate-600">
+            <p className="mt-4 leading-relaxed text-slate-600">
               {story.description}
             </p>
 
-            <button className="mt-6 flex items-center text-sm font-semibold text-green-700">
+            <Link
+              href={story.href}
+              className="
+                mt-6
+                inline-flex
+                items-center
+                gap-2
+                text-sm
+                font-semibold
+                text-green-700
+                transition-all
+                hover:gap-3
+              "
+            >
               Read Story
 
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </button>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </article>
       ))}
+    </div>
+
+    {/* Bottom Link */}
+
+    <div className="mt-14 text-center">
+      <Link
+        href="/stories"
+        className="
+          inline-flex
+          items-center
+          gap-2
+          text-sm
+          font-semibold
+          uppercase
+          tracking-wider
+          text-green-700
+          transition-all
+          hover:gap-3
+        "
+      >
+        View All Stories
+
+        <ArrowRight className="h-4 w-4" />
+      </Link>
     </div>
   </Container>
 </section>

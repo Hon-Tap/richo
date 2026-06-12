@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, ArrowRight } from "lucide-react";
+import { ArrowRight, Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import {
 Sheet,
 SheetContent,
+SheetTitle,
 SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -25,64 +26,74 @@ const links = [
 export default function MobileMenu() {
 const pathname = usePathname();
 
-return ( <div className="lg:hidden"> <Sheet> <SheetTrigger asChild> <Button
-         variant="ghost"
-         size="icon"
-         className="
-           h-11
-           w-11
-           rounded-full
-           border
-           border-slate-200
-           hover:bg-slate-100
-         "
-       > <Menu className="h-5 w-5" /> </Button> </SheetTrigger>
+return ( <div className="lg:hidden"> <Sheet> <SheetTrigger
+       className="
+         flex
+         h-11
+         w-11
+         items-center
+         justify-center
+         rounded-full
+         border
+         border-slate-200
+         bg-white
+         text-slate-700
+         shadow-sm
+         transition-all
+         hover:border-green-600
+         hover:text-green-700
+         hover:shadow-md
+       "
+     > <Menu className="h-5 w-5" /> </SheetTrigger>
 
     <SheetContent
       side="right"
-      className="w-[360px] p-0"
+      className="w-[360px] max-w-full p-0"
     >
-      <div className="flex h-full flex-col">
+      <SheetTitle className="sr-only">
+        Mobile Navigation Menu
+      </SheetTitle>
+
+      <div className="flex h-full flex-col bg-white">
         {/* Header */}
 
-        <div className="border-b border-slate-200 px-6 py-5">
-          <div className="flex items-center gap-3">
+        <div className="border-b border-slate-200 bg-slate-50 px-6 py-6">
+          <div className="flex items-center gap-4">
             <Image
               src="/images/logo.png"
-              alt="RICHO"
-              width={52}
-              height={52}
+              alt="RICHO Logo"
+              width={58}
+              height={58}
+              priority
             />
 
             <div>
-              <h3 className="text-base font-bold text-green-900">
+              <h3 className="text-lg font-bold text-green-900">
                 RICHO
               </h3>
 
-              <p className="text-xs text-slate-500">
+              <p className="text-xs leading-relaxed text-slate-600">
                 Rural Integrated Community
-              </p>
-
-              <p className="text-xs text-slate-500">
+                <br />
                 Health & Climate Organisation
               </p>
             </div>
           </div>
 
-          <p className="mt-4 text-sm leading-relaxed text-slate-600">
+          <p className="mt-5 text-sm leading-relaxed text-slate-600">
             Building healthier communities,
-            climate resilience, and peaceful
-            livelihoods across South Sudan.
+            strengthening climate resilience,
+            and advancing peacebuilding across
+            South Sudan.
           </p>
         </div>
 
         {/* Navigation */}
 
-        <nav className="flex-1 px-6 py-6">
-          <div className="space-y-1">
+        <nav className="flex-1 px-5 py-6">
+          <div className="space-y-2">
             {links.map((link) => {
-              const active =
-                pathname === link.href;
+              const active = pathname === link.href;
 
               return (
                 <Link
@@ -98,15 +109,15 @@ return ( <div className="lg:hidden"> <Sheet> <SheetTrigger asChild> <Button
                     transition-all
                     ${
                       active
-                        ? "bg-green-50 text-green-700"
+                        ? "bg-green-50 text-green-700 shadow-sm"
                         : "text-slate-700 hover:bg-slate-50 hover:text-green-700"
                     }
                   `}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
 
                   {active && (
-                    <span className="h-2 w-2 rounded-full bg-green-700" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-700" />
                   )}
                 </Link>
               );
@@ -116,26 +127,34 @@ return ( <div className="lg:hidden"> <Sheet> <SheetTrigger asChild> <Button
 
         {/* Footer */}
 
-        <div className="border-t border-slate-200 p-6">
-          <Button
-            className="
-              h-12
-              w-full
-              rounded-full
-              bg-green-700
-              text-sm
-              font-semibold
-              hover:bg-green-800
-            "
-          >
-            Partner With Us
+        <div className="border-t border-slate-200 bg-slate-50 p-6">
+          <Link href="/contact">
+            <Button
+              className="
+                flex
+                h-12
+                w-full
+                items-center
+                justify-center
+                rounded-full
+                bg-green-700
+                text-sm
+                font-semibold
+                text-white
+                transition-all
+                hover:bg-green-800
+              "
+            >
+              Partner With Us
 
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
 
-          <p className="mt-4 text-center text-xs text-slate-500">
+          <p className="mt-4 text-center text-xs leading-relaxed text-slate-500">
             Empowering communities through
-            health, resilience and peacebuilding.
+            health, climate resilience,
+            and peacebuilding initiatives.
           </p>
         </div>
       </div>

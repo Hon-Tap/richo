@@ -4,16 +4,19 @@ import Container from "@/components/ui/container";
 
 const locations = [
 {
+number: "01",
 county: "Ayod County",
 description:
 "Supporting climate resilience, health promotion and community recovery initiatives.",
 },
 {
+number: "02",
 county: "Fangak County",
 description:
 "Delivering WASH interventions, emergency preparedness and flood resilience programmes.",
 },
 {
+number: "03",
 county: "Pigi County",
 description:
 "Strengthening local health systems and community-led development efforts.",
@@ -21,70 +24,80 @@ description:
 ];
 
 export default function OperationsMap() {
-return ( <section className="bg-white py-24"> <Container> <div className="mx-auto max-w-3xl text-center"> <span className="inline-flex rounded-full bg-orange-100 px-5 py-2 text-sm font-medium text-orange-800">
-Where We Work </span>
+return ( <section className="border-t border-slate-200 bg-white py-24"> <Container> <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+{/* LEFT */}
 
-      <h2 className="mt-6 text-4xl font-bold text-slate-900 md:text-5xl">
-        Serving Communities Across South Sudan
-      </h2>
+      <div className="lg:sticky lg:top-32 lg:self-start">
+        <span className="text-sm font-semibold uppercase tracking-[0.25em] text-green-700">
+          Where We Work
+        </span>
 
-      <p className="mt-6 text-lg leading-relaxed text-slate-600">
-        Our current focus is supporting vulnerable communities in
-        flood-affected and climate-sensitive areas while preparing
-        for future expansion.
-      </p>
-    </div>
+        <h2 className="mt-5 text-4xl font-light leading-tight text-slate-900 md:text-5xl">
+          Serving Communities Across South Sudan
+        </h2>
 
-    <div className="mt-20 relative">
-      <div className="absolute left-7 top-0 hidden h-full w-px bg-slate-200 lg:block" />
+        <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-600">
+          RICHO currently focuses on vulnerable,
+          flood-affected and climate-sensitive
+          communities in Jonglei State while
+          preparing for future expansion.
+        </p>
 
-      <div className="space-y-10">
-        {locations.map((location) => (
-          <div
-            key={location.county}
-            className="
-              relative
-              rounded-3xl
-              border
-              border-slate-200
-              bg-slate-50
-              p-8
-              transition-all
-              duration-500
-              hover:border-green-200
-              hover:bg-white
-              hover:shadow-lg
-            "
-          >
-            <div className="flex items-start gap-6">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-green-100">
-                <MapPin className="h-6 w-6 text-green-700" />
+        <div className="mt-10 flex items-center gap-3">
+          <div className="h-3 w-3 rounded-full bg-green-600" />
+
+          <p className="text-sm font-medium text-slate-600">
+            Current operational footprint
+          </p>
+        </div>
+      </div>
+
+      {/* RIGHT */}
+
+      <div className="relative">
+        <div className="absolute left-6 top-0 h-full w-px bg-slate-200" />
+
+        <div className="space-y-10">
+          {locations.map((location) => (
+            <div
+              key={location.county}
+              className="relative flex gap-6"
+            >
+              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-green-700 text-white shadow-lg">
+                <MapPin className="h-5 w-5" />
               </div>
 
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900">
+              <div className="pb-10">
+                <span className="text-sm font-semibold text-green-700">
+                  {location.number}
+                </span>
+
+                <h3 className="mt-2 text-2xl font-semibold text-slate-900">
                   {location.county}
                 </h3>
 
-                <p className="mt-4 leading-relaxed text-slate-600">
+                <p className="mt-3 max-w-xl leading-relaxed text-slate-600">
                   {location.description}
                 </p>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="mt-12 rounded-3xl border border-green-100 bg-green-50 p-8 text-center">
-        <h3 className="text-2xl font-bold text-slate-900">
-          Expanding Community Reach
-        </h3>
+        {/* Future Growth */}
 
-        <p className="mx-auto mt-4 max-w-2xl text-slate-600">
-          RICHO continues to assess emerging humanitarian and
-          development needs to support additional communities in
-          the future.
-        </p>
+        <div className="mt-10 border-l-4 border-green-700 bg-slate-50 p-6">
+          <h4 className="text-lg font-semibold text-slate-900">
+            Future Expansion
+          </h4>
+
+          <p className="mt-2 leading-relaxed text-slate-600">
+            RICHO continues to assess emerging
+            humanitarian and development needs
+            to extend support to additional
+            communities across South Sudan.
+          </p>
+        </div>
       </div>
     </div>
   </Container>
